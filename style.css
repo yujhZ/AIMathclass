@@ -372,3 +372,21 @@ input:checked + label > .knob > i:before {
   opacity: 1;
   transform: translateY(84px);
 }
+
+/* 관리자 모드 버튼 스타일 */
+#admin-mode-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#admin-mode-btn:hover {
+    background-color: #5a6268;
+}
