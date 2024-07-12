@@ -1,12 +1,26 @@
 {
-    "modelUrl": "https://teachablemachine.withgoogle.com/models/PQ2w9UXnX/",
+    "modelUrl": "https://teachablemachine.withgoogle.com/models/Ee03QqCrK/",
     "classDetails": [
+        {
+            "name": "white",
+            "title": "흰색",
+            "explain": "",
+            "celeb": "",
+            "color": "rgba(255, 253, 194, 1)"
+        },
         {
             "name": "red",
             "title": "빨갱이",
             "explain": "",
             "celeb": "",
             "color": "rgba(255, 0, 0, 1)"
+        },
+        {
+            "name": "green",
+            "title": "초록",
+            "explain": "",
+            "celeb": "",
+            "color": "rgba(0, 255, 0, 1)"
         },
         {
             "name": "blue",
