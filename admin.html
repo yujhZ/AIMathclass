@@ -21,6 +21,15 @@
             <div id="class-details"></div>
             <button type="button" class="btn btn-primary" onclick="saveSettings()">저장</button>
         </form>
+
+        <h2 class="mt-5">비밀번호 변경</h2>
+        <form id="password-form">
+            <div class="form-group">
+                <label for="new-password">새 비밀번호</label>
+                <input type="password" class="form-control" id="new-password" placeholder="새 비밀번호를 입력하세요">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="changePassword()">비밀번호 변경</button>
+        </form>
     </div>
 
     <script>
@@ -71,6 +80,32 @@
             localStorage.setItem('modelSettings', JSON.stringify(settings));
             alert('설정이 저장되었습니다.');
         }
+
+        function changePassword() {
+            const newPassword = document.getElementById('new-password').value;
+            if (newPassword) {
+                localStorage.setItem('adminPassword', newPassword);
+                alert('비밀번호가 변경되었습니다.');
+            } else {
+                alert('새 비밀번호를 입력하세요.');
+            }
+        }
+
+        // 페이지 로드 시 기존 설정을 폼에 반영
+        window.onload = function() {
+            const settings = JSON.parse(localStorage.getItem('modelSettings'));
+            if (settings) {
+                document.getElementById('model-url').value = settings.modelUrl;
+                document.getElementById('num-classes').value = settings.numClasses;
+                generateClassInputs(settings.numClasses);
+                settings.classDetails.forEach((detail, index) => {
+                    document.getElementById(`class-name-${index}`).value = detail.name;
+                    document.getElementById(`class-title-${index}`).value = detail.title;
+                    document.getElementById(`class-explain-${index}`).value = detail.explain;
+                    document.getElementById(`class-celeb-${index}`).value = detail.celeb;
+                });
+            }
+        };
     </script>
 </body>
 </html>
