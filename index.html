@@ -19,7 +19,6 @@
     <script data-ad-client="ca-pub-2962790403778987" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
-    <!-- 관리자 모드 버튼 추가 -->
     <button id="admin-mode-btn" class="btn btn-secondary">관리자 모드</button>
     <section class="section">
         <h1 class="title">나만의 동물상 테스트</h1>
@@ -79,19 +78,6 @@
 
         function gaReload() {
             gtag('event', '다른 사진으로 재시도', {
-                event_category: '다른 사진으로 재시도',
-            });
-            window.location.reload();
-        }
-
-        function gaReload1() {
-            gtag('event', '다른 사진으로 재시도 1차', {
-                event_category: '다른 사진으로 재시도',
-            });
-        }
-
-        function gaReload2() {
-            gtag('event', '다른 사진으로 재시도 2차', {
                 event_category: '다른 사진으로 재시도',
             });
             window.location.reload();
@@ -239,17 +225,16 @@
         }
     </script>
 
-    <!-- TensorFlow.js 및 Teachable Machine Image 라이브러리 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 
     <div id="disqus_thread"></div>
     <script>
-        (function() { // DON'T EDIT BELOW THIS LINE
+        (function() {
             var d = document, s = d.createElement('script');
             s.src = 'https://animal-12.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
-            (d.head or d.body).appendChild(s);
+            (d.head || d.body).appendChild(s);
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
