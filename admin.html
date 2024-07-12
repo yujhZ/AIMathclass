@@ -22,6 +22,7 @@
         <div id="class-details"></div>
         <button class="btn btn-primary mt-3" onclick="saveSettings()">설정 저장</button>
         <button class="btn btn-secondary mt-3" onclick="changePassword()">비밀번호 변경</button>
+        <button class="btn btn-secondary mt-3" onclick="exitAdminMode()">테스트 페이지로 돌아가기</button>
     </div>
 
     <script>
@@ -57,12 +58,12 @@
                 }
             }
         });
-    
-        function saveSettings() {
+
+        async function saveSettings() {
             const modelUrl = document.getElementById('model-url').value;
             const numClasses = parseInt(document.getElementById('num-classes').value, 10);
             const classDetails = [];
-    
+
             for (let i = 0; i < numClasses; i++) {
                 classDetails.push({
                     name: document.getElementById(`class-name-${i}`).value,
@@ -72,17 +73,33 @@
                     color: document.getElementById(`class-color-${i}`).value
                 });
             }
-    
+
             const settings = {
                 modelUrl,
                 numClasses,
                 classDetails,
             };
-    
-            localStorage.setItem('modelSettings', JSON.stringify(settings));
-            alert('설정이 저장되었습니다.');
+
+            try {
+                const response = await fetch('/settings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(settings),
+                });
+
+                if (response.ok) {
+                    alert('설정이 저장되었습니다.');
+                } else {
+                    alert('설정을 저장하는 중 오류가 발생했습니다.');
+                }
+            } catch (error) {
+                console.error('Error saving settings:', error);
+                alert('설정을 저장하는 중 오류가 발생했습니다.');
+            }
         }
-    
+
         function changePassword() {
             const newPassword = prompt('새 비밀번호를 입력하세요:');
             if (newPassword) {
@@ -92,7 +109,35 @@
                 alert('비밀번호 변경이 취소되었습니다.');
             }
         }
-</script>
 
+        function exitAdminMode() {
+            window.location.href = 'index.html';
+        }
+
+        async function loadSettings() {
+            try {
+                const response = await fetch('/settings');
+                const settings = await response.json();
+
+                document.getElementById('model-url').value = settings.modelUrl;
+                document.getElementById('num-classes').value = settings.numClasses;
+
+                const event = new Event('input');
+                document.getElementById('num-classes').dispatchEvent(event);
+
+                settings.classDetails.forEach((detail, index) => {
+                    document.getElementById(`class-name-${index}`).value = detail.name;
+                    document.getElementById(`class-title-${index}`).value = detail.title;
+                    document.getElementById(`class-explain-${index}`).value = detail.explain;
+                    document.getElementById(`class-celeb-${index}`).value = detail.celeb;
+                    document.getElementById(`class-color-${index}`).value = detail.color;
+                });
+            } catch (error) {
+                console.error('Error loading settings:', error);
+            }
+        }
+
+        window.onload = loadSettings;
+    </script>
 </body>
 </html>
