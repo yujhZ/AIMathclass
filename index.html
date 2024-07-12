@@ -61,7 +61,7 @@
 
     <footer class="footer pt-5 container d-flex justify-content-center">
         <div>
-            <p>&copy; 내이름 2024. All Rights Reserved.</p>
+            <p>&copy; 내이름 2023. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -158,8 +158,12 @@
         }
 
         async function init() {
-            let settings = JSON.parse(localStorage.getItem('modelSettings'));
-            if (!settings) {
+            let settings;
+            try {
+                const response = await fetch('/settings');
+                settings = await response.json();
+            } catch (error) {
+                console.error('Error loading settings:', error);
                 settings = {
                     modelUrl: 'https://teachablemachine.withgoogle.com/models/APW2JsR7f/',
                     classDetails: [
@@ -192,7 +196,7 @@
                 prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
 
                 const topPrediction = prediction[0].className;
-                const settings = JSON.parse(localStorage.getItem('modelSettings'));
+                const settings = await fetch('/settings').then(res => res.json());
                 const classDetail = settings.classDetails.find(detail => detail.name === topPrediction);
 
                 if (classDetail) {
