@@ -373,6 +373,8 @@ input:checked + label > .knob > i:before {
   transform: translateY(84px);
 }
 
+/* 기존 스타일 */
+
 /* 관리자 모드 버튼 스타일 */
 #admin-mode-btn {
     position: fixed;
