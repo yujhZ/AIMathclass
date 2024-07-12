@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
             <label for="num-classes">분류 개수</label>
-            <input type="number" class="form-control" id="num-classes" placeholder="분류 개수를 입력하세요">
+            <input type="number" class="form-control" id="num-classes" placeholder="분류 개수를 입력하세요" value="0">
         </div>
         <div id="class-details"></div>
         <button class="btn btn-primary mt-3" onclick="saveSettings()">설정 저장</button>
@@ -26,39 +26,41 @@
 
     <script>
         document.getElementById('num-classes').addEventListener('input', function() {
-            const numClasses = this.value;
+            const numClasses = parseInt(this.value, 10);
             const classDetailsContainer = document.getElementById('class-details');
             classDetailsContainer.innerHTML = '';
-            for (let i = 0; i < numClasses; i++) {
-                const classDetailForm = `
-                    <div class="form-group">
-                        <label for="class-name-${i}">분류 이름 ${i + 1}</label>
-                        <input type="text" class="form-control" id="class-name-${i}" placeholder="분류 이름을 입력하세요">
-                    </div>
-                    <div class="form-group">
-                        <label for="class-title-${i}">분류 타이틀 ${i + 1}</label>
-                        <input type="text" class="form-control" id="class-title-${i}" placeholder="분류 타이틀을 입력하세요">
-                    </div>
-                    <div class="form-group">
-                        <label for="class-explain-${i}">분류 설명 ${i + 1}</label>
-                        <input type="text" class="form-control" id="class-explain-${i}" placeholder="분류 설명을 입력하세요">
-                    </div>
-                    <div class="form-group">
-                        <label for="class-celeb-${i}">분류 연예인 ${i + 1}</label>
-                        <input type="text" class="form-control" id="class-celeb-${i}" placeholder="분류 연예인을 입력하세요">
-                    </div>
-                    <div class="form-group">
-                        <label for="class-color-${i}">색상 ${i + 1}</label>
-                        <input type="color" class="form-control" id="class-color-${i}" value="#ffffff">
-                    </div>
-                `;
-                classDetailsContainer.innerHTML += classDetailForm;
+            if (numClasses > 0) {
+                for (let i = 0; i < numClasses; i++) {
+                    const classDetailForm = `
+                        <div class="form-group">
+                            <label for="class-name-${i}">분류 이름 ${i + 1}</label>
+                            <input type="text" class="form-control" id="class-name-${i}" placeholder="분류 이름을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="class-title-${i}">분류 타이틀 ${i + 1}</label>
+                            <input type="text" class="form-control" id="class-title-${i}" placeholder="분류 타이틀을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="class-explain-${i}">분류 설명 ${i + 1}</label>
+                            <input type="text" class="form-control" id="class-explain-${i}" placeholder="분류 설명을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="class-celeb-${i}">분류 연예인 ${i + 1}</label>
+                            <input type="text" class="form-control" id="class-celeb-${i}" placeholder="분류 연예인을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="class-color-${i}">색상 ${i + 1}</label>
+                            <input type="color" class="form-control" id="class-color-${i}" value="#ffffff">
+                        </div>
+                    `;
+                    classDetailsContainer.innerHTML += classDetailForm;
+                }
             }
         });
 
         function saveSettings() {
             const modelUrl = document.getElementById('model-url').value;
-            const numClasses = document.getElementById('num-classes').value;
+            const numClasses = parseInt(document.getElementById('num-classes').value, 10);
             const classDetails = [];
 
             for (let i = 0; i < numClasses; i++) {
