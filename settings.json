@@ -1,61 +1,19 @@
 {
-    "modelUrl": "https://teachablemachine.withgoogle.com/models/obhuNCQQT/",
+    "modelUrl": "https://teachablemachine.withgoogle.com/models/PQ2w9UXnX/",
     "classDetails": [
         {
-            "name": "0",
-            "title": "null",
-            "explain": "",
-            "celeb": "",
-            "color": "rgba(0, 0, 0, 1)"
-        },
-        {
-            "name": "1",
-            "title": "R",
+            "name": "red",
+            "title": "빨갱이",
             "explain": "",
             "celeb": "",
             "color": "rgba(255, 0, 0, 1)"
         },
         {
-            "name": "2",
-            "title": "G",
-            "explain": "맨날 그린..",
-            "celeb": "",
-            "color": "rgba(59, 255, 0, 1)"
-        },
-        {
-            "name": "3",
-            "title": "B",
+            "name": "blue",
+            "title": "파랭이",
             "explain": "",
             "celeb": "",
             "color": "rgba(0, 0, 255, 1)"
-        },
-        {
-            "name": "4",
-            "title": "R+G",
-            "explain": "",
-            "celeb": "",
-            "color": "rgba(255, 255, 0, 1)"
-        },
-        {
-            "name": "5",
-            "title": "R+B",
-            "explain": "",
-            "celeb": "",
-            "color": "rgba(255, 0, 255, 1)"
-        },
-        {
-            "name": "6",
-            "title": "G+B",
-            "explain": "",
-            "celeb": "",
-            "color": "rgba(0, 255, 255, 1)"
-        },
-        {
-            "name": "7",
-            "title": "R+G+B",
-            "explain": "",
-            "celeb": "",
-            "color": "rgba(255, 255, 255, 1)"
         }
     ]
 }
