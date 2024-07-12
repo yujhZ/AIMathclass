@@ -1,0 +1,20 @@
+{
+    "modelUrl": "https://teachablemachine.withgoogle.com/models/APW2JsR7f/",
+    "numClasses": 2,
+    "classDetails": [
+        {
+            "name": "유재석",
+            "title": "입툭튀 유재석상",
+            "explain": "다정다감하고 귀여운 당신은...",
+            "celeb": "유재석상 연예인: 박보영, 아이유, 윤승아, 민아(걸스데이), 한지민",
+            "color": "rgba(27, 175, 234, 1)"
+        },
+        {
+            "name": "강호동",
+            "title": "집돼지 강호동상",
+            "explain": "도도하고 섹시한 당신은...",
+            "celeb": "강호동상 연예인: 안소희(원더걸스), 오연서, 한예슬, 이성경, 이효리",
+            "color": "rgba(251, 176, 59, 1)"
+        }
+    ]
+}
