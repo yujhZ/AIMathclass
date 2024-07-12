@@ -113,13 +113,12 @@
                     $('.file-upload-image').attr('src', e.target.result);
                     $('.file-upload-content').show();
                     $('.image-title').html(input.files[0].name);
+                    init().then(function () {
+                        console.log('hello');
+                        predict().then(() => $('#loading').hide());
+                    });
                 };
                 reader.readAsDataURL(input.files[0]);
-                init().then(function() {
-                    console.log('hello');
-                    predict();
-                    $('#loading').hide();
-                });
             } else {
                 removeUpload();
             }
@@ -138,22 +137,19 @@
         $('.image-upload-wrap').bind('dragleave', function() {
             $('.image-upload-wrap').removeClass('image-dropping');
         });
-    </script>
-    <script type="text/javascript">
-        let settings = JSON.parse(localStorage.getItem('modelSettings'));
-        if (!settings) {
-            settings = {
-                modelUrl: 'https://teachablemachine.withgoogle.com/models/APW2JsR7f/',
-                classDetails: [
-                    {name: '유재석', title: '입툭튀 유재석상', explain: '다정다감하고 귀여운 당신은...', celeb: '유재석상 연예인: 박보영, 아이유, 윤승아, 민아(걸스데이), 한지민'},
-                    {name: '강호동', title: '집돼지 강호동상', explain: '도도하고 섹시한 당신은...', celeb: '강호동상 연예인: 안소희(원더걸스), 오연서, 한예슬, 이성경, 이효리'}
-                ]
-            };
-        }
-
-        let model, labelContainer, maxPredictions;
 
         async function init() {
+            let settings = JSON.parse(localStorage.getItem('modelSettings'));
+            if (!settings) {
+                settings = {
+                    modelUrl: 'https://teachablemachine.withgoogle.com/models/APW2JsR7f/',
+                    classDetails: [
+                        {name: '유재석', title: '입툭튀 유재석상', explain: '다정다감하고 귀여운 당신은...', celeb: '유재석상 연예인: 박보영, 아이유, 윤승아, 민아(걸스데이), 한지민'},
+                        {name: '강호동', title: '집돼지 강호동상', explain: '도도하고 섹시한 당신은...', celeb: '강호동상 연예인: 안소희(원더걸스), 오연서, 한예슬, 이성경, 이효리'}
+                    ]
+                };
+            }
+
             const modelURL = settings.modelUrl + 'model.json';
             const metadataURL = settings.modelUrl + 'metadata.json';
             model = await tmImage.load(modelURL, metadataURL);
@@ -172,6 +168,7 @@
             prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
 
             const topPrediction = prediction[0].className;
+            const settings = JSON.parse(localStorage.getItem('modelSettings'));
             const classDetail = settings.classDetails.find(detail => detail.name === topPrediction);
 
             if (classDetail) {
@@ -229,4 +226,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 gender toggle
 Copyright (c) 2020 by Mert Cukuren (https://codepen.io/knyttneve/pen/bPpEZY)
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+이 페이지는 유튜버 조코딩님의 강좌를 활용하여 제작되었습니다.
+-->
+</html>
