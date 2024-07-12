@@ -32,6 +32,11 @@
         </form>
     </div>
 
+    <div class="form-group">
+        <label for="class-color-${i}">색상</label>
+        <input type="color" class="form-control" id="class-color-${i}" value="#ffffff">
+    </div>     
+    
     <script>
         function generateClassInputs(numClasses) {
             const classDetails = document.getElementById('class-details');
@@ -61,22 +66,23 @@
             const modelUrl = document.getElementById('model-url').value;
             const numClasses = document.getElementById('num-classes').value;
             const classDetails = [];
-
+        
             for (let i = 0; i < numClasses; i++) {
                 classDetails.push({
                     name: document.getElementById(`class-name-${i}`).value,
                     title: document.getElementById(`class-title-${i}`).value,
                     explain: document.getElementById(`class-explain-${i}`).value,
                     celeb: document.getElementById(`class-celeb-${i}`).value,
+                    color: document.getElementById(`class-color-${i}`).value
                 });
             }
-
+        
             const settings = {
                 modelUrl,
                 numClasses,
                 classDetails,
             };
-
+        
             localStorage.setItem('modelSettings', JSON.stringify(settings));
             alert('설정이 저장되었습니다.');
         }
