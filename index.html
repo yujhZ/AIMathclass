@@ -7,9 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>나만의 동물상 테스트</title>
-
     <link rel="stylesheet" href="style.css">
-
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e64b3727e862b06"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145482737-6"></script>
     <script>
@@ -20,11 +18,9 @@
     </script>
     <script data-ad-client="ca-pub-2962790403778987" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
-
 <body>
     <!-- 관리자 모드 버튼 추가 -->
     <button id="admin-mode-btn" class="btn btn-secondary">관리자 모드</button>
-
     <section class="section">
         <h1 class="title">나만의 동물상 테스트</h1>
         <div class="image-container">
@@ -144,17 +140,52 @@
             $('.image-upload-wrap').removeClass('image-dropping');
         });
 
+        function addDynamicStyles(className, color) {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .${className}-box {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 2rem;
+                    border-radius: 10px;
+                    width: 100%;
+                    background-color: ${color}20;
+                }
+                .${className}-bar {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 2rem;
+                    border-radius: 10px;
+                    background-color: ${color};
+                }
+                .${className}-animal-title {
+                    color: ${color};
+                }
+                .${className}-animal-celeb {
+                    color: ${color};
+                    font-size: 1.2rem;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
         async function init() {
             let settings = JSON.parse(localStorage.getItem('modelSettings'));
             if (!settings) {
                 settings = {
                     modelUrl: 'https://teachablemachine.withgoogle.com/models/APW2JsR7f/',
                     classDetails: [
-                        {name: '유재석', title: '입툭튀 유재석상', explain: '다정다감하고 귀여운 당신은...', celeb: '유재석상 연예인: 박보영, 아이유, 윤승아, 민아(걸스데이), 한지민'},
-                        {name: '강호동', title: '집돼지 강호동상', explain: '도도하고 섹시한 당신은...', celeb: '강호동상 연예인: 안소희(원더걸스), 오연서, 한예슬, 이성경, 이효리'}
+                        {name: '유재석', title: '입툭튀 유재석상', explain: '다정다감하고 귀여운 당신은...', celeb: '유재석상 연예인: 박보영, 아이유, 윤승아, 민아(걸스데이), 한지민', color: 'rgba(27, 175, 234, 1)'},
+                        {name: '강호동', title: '집돼지 강호동상', explain: '도도하고 섹시한 당신은...', celeb: '강호동상 연예인: 안소희(원더걸스), 오연서, 한예슬, 이성경, 이효리', color: 'rgba(251, 176, 59, 1)'}
                     ]
                 };
             }
+
+            settings.classDetails.forEach(detail => {
+                addDynamicStyles(detail.name, detail.color);
+            });
 
             const modelURL = settings.modelUrl + 'model.json';
             const metadataURL = settings.modelUrl + 'metadata.json';
@@ -193,8 +224,8 @@
                     const label = `<div class='animal-label d-flex align-items-center'>${labelTitle}</div>`;
                     const bar = `
                         <div class='bar-container position-relative container'>
-                            <div class='${prediction[i].className}-box'></div>
-                            <div class='d-flex justify-content-center align-items-center ${prediction[i].className}-bar' style='width: ${barWidth}'>
+                            <div class='${prediction[i].className}-box' style='width: 100%; height: 100%;'></div>
+                            <div class='d-flex justify-content-center align-items-center ${prediction[i].className}-bar' style='width: ${barWidth}; height: 100%;'>
                                 <span class='d-block percent-text'>${Math.round(prediction[i].probability.toFixed(2) * 100)}%</span>
                             </div>
                         </div>`;
@@ -214,16 +245,6 @@
 
     <div id="disqus_thread"></div>
     <script>
-        /**
-         * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-         */
-        /*
-        var disqus_config = function () {
-        this.page.url = https://face-wfmre.run.goorm.site/face/index.html;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = animal; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
         (function() { // DON'T EDIT BELOW THIS LINE
             var d = document, s = d.createElement('script');
             s.src = 'https://animal-12.disqus.com/embed.js';
