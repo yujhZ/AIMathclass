@@ -68,7 +68,12 @@
         async function loadSettings() {
             try {
                 const response = await fetch(`settings.json?cache_buster=${new Date().getTime()}`);
-                return await response.json();
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log('Settings loaded:', data);
+                return data;
             } catch (error) {
                 console.error('Error loading settings:', error);
                 return null;
@@ -224,7 +229,7 @@
             var d = document, s = d.createElement('script');
             s.src = 'https://animal-12.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
+            (d.head or d.body).appendChild(s);
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
