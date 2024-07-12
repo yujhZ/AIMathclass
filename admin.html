@@ -57,12 +57,12 @@
                 }
             }
         });
-
+    
         function saveSettings() {
             const modelUrl = document.getElementById('model-url').value;
             const numClasses = parseInt(document.getElementById('num-classes').value, 10);
             const classDetails = [];
-
+    
             for (let i = 0; i < numClasses; i++) {
                 classDetails.push({
                     name: document.getElementById(`class-name-${i}`).value,
@@ -72,17 +72,17 @@
                     color: document.getElementById(`class-color-${i}`).value
                 });
             }
-
+    
             const settings = {
                 modelUrl,
                 numClasses,
                 classDetails,
             };
-
+    
             localStorage.setItem('modelSettings', JSON.stringify(settings));
             alert('설정이 저장되었습니다.');
         }
-
+    
         function changePassword() {
             const newPassword = prompt('새 비밀번호를 입력하세요:');
             if (newPassword) {
@@ -92,6 +92,7 @@
                 alert('비밀번호 변경이 취소되었습니다.');
             }
         }
-    </script>
+</script>
+
 </body>
 </html>
