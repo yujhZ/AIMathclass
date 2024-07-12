@@ -85,7 +85,7 @@
                     height: 2rem;
                     border-radius: 10px;
                     width: 100%;
-                    background-color: ${color}20;
+                    background-color: ${color}33; /* Adjust transparency for background */
                 }
                 .${className}-bar {
                     position: absolute;
@@ -154,7 +154,7 @@
                 }
 
                 for (let i = 0; i < maxPredictions; i++) {
-                    const labelTitle = settings.classDetails[i] ? settings.classDetails[i].name : '알 수 없음';
+                    const labelTitle = prediction[i].className;
                     const barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + '%';
                     const label = `<div class='animal-label d-flex align-items-center'>${labelTitle}</div>`;
                     const bar = `
@@ -172,16 +172,6 @@
                 $('#loading').hide();
             }
         }
-
-        document.getElementById('admin-mode-btn').addEventListener('click', function() {
-            const savedPassword = localStorage.getItem('adminPassword') || '0000';
-            const password = prompt('관리자 비밀번호를 입력하세요:');
-            if (password === savedPassword) {
-                window.location.href = 'admin.html';
-            } else {
-                alert('비밀번호가 틀렸습니다.');
-            }
-        });
 
         function gaReload() {
             gtag('event', '다른 사진으로 재시도', {
@@ -245,7 +235,7 @@
             var d = document, s = d.createElement('script');
             s.src = 'https://animal-12.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
-            (d.head or d.body).appendChild(s);
+            (d.head || d.body).appendChild(s);
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
