@@ -1,16 +1,17 @@
 {
-    "modelUrl": "https://teachablemachine.withgoogle.com/models/APW2JsR7f/",
+    // "modelUrl": "https://teachablemachine.withgoogle.com/models/APW2JsR7f/",
+    "modelUrl": "https://teachablemachine.withgoogle.com/models/xinPmcG6M/",
     "classDetails": [
         {
-            "name": "유재석",
-            "title": "입툭튀 유재석상",
+            "name": "강아지",
+            "title": "강아지상",
             "explain": "다정다감하고 귀여운 당신은 모든 사람들에게 즐거움을 주는 호감형이다! 상냥하고 활발한 성격으로 어디에서도 인기폭발이지만, 애교와 웃음이 많아 연인에게 특히나 사랑스럽다. 당신은 애인바라기로 애인의 관심이 부족하면 시무룩해지고 외로움을 타는 모습이 마치 강아지와 똑 닮았다!",
             "celeb": "유재석상 연예인: 박보영, 아이유, 윤승아, 민아(걸스데이), 한지민",
             "color": "rgba(27, 175, 234, 1)"
         },
         {
-            "name": "강호동",
-            "title": "집돼지 강호동상",
+            "name": "말",
+            "title": "말상",
             "explain": "도도하고 섹시한 당신은 첫인상은 차가워 보이지만 묘한 매력을 풍겨 언제나 인기가 넘친다. 자존심이 세계 1등과 맞먹지만 관심 받는 것을 좋아하고 애인에게 관심이 받고 싶을 때는 애교도 부릴 줄 아는 귀여운 매력을 가졌다. 시크한 츤데레로 연인에게 끊임없이 설렘을 안겨주는 당신은 고양이와 닮았다!",
             "celeb": "강호동상 연예인: 안소희(원더걸스), 오연서, 한예슬, 이성경, 이효리",
             "color": "rgba(251, 176, 59, 1)"
