@@ -67,7 +67,7 @@
     <script>
         async function loadSettings() {
             try {
-                const response = await fetch('settings.json');
+                const response = await fetch(`settings.json?cache_buster=${new Date().getTime()}`);
                 return await response.json();
             } catch (error) {
                 console.error('Error loading settings:', error);
