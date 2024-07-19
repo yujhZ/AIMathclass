@@ -2,15 +2,15 @@
     "pageTitle": "나만의 동물상 테스트",
     "mainTitle": "난 무슨 동물상일까",
     "subtitle": "얼굴로 보는 인공지능 동물상 테스트",
-    "footerText": "&copy; 태영테크 2024. All Rights Reserved.",
+    "footerText": "&copy; 허석테크 2024. All Rights Reserved.",
     
-    "modelUrl": "https://teachablemachine.withgoogle.com/models/FgauoPNN7/",
+    "modelUrl": "https://teachablemachine.withgoogle.com/models/CPrPznTPo/",
     "classDetails": [
         {
             "name": "강아지",
             "title": "강아지상",
             "explain": "다정다감하고 귀여운 당신은 모든 사람들에게 즐거움을 주는 호감형이다! 상냥하고 활발한 성격으로 어디에서도 인기폭발이지만, 애교와 웃음이 많아 연인에게 특히나 사랑스럽다. 당신은 애인바라기로 애인의 관심이 부족하면 시무룩해지고 외로움을 타는 모습이 마치 강아지와 똑 닮았다!",
-            "celeb": "강아지상 연예인: 박보영, 아이유, 윤승아, 민아(걸스데이), 한지민",
+            "celeb": "",
             "color": "rgba(27, 175, 234, 1)"
         },
         {
